@@ -7,6 +7,7 @@ import IFroggerState from './interfaces/frogger-state';
 import GameStatusTop from '../game-status-top/game-status-top';
 import GameStatusBottom from '../game-status-bottom/game-status-bottom';
 import DrawSprite from '../draw-sprite/draw-sprite';
+import DirectionEnum from '../../classes/interfaces/direction-enum';
 
 import './styles/frogger.scss';
 
@@ -52,16 +53,16 @@ export default class Frogger extends React.Component<IFroggerProps, IFroggerStat
 
 		switch (event.code) {
 			case 'ArrowUp':
-				if (player.isValidSpace(player.x, player.y - 1)) player.moveUp();
+				if (player.isValidSpace(player.x, player.y - 1)) player.move(DirectionEnum.UP);
 				break;
 			case 'ArrowDown':
-				if (player.isValidSpace(player.x, player.y + 1)) player.moveDown();
+				if (player.isValidSpace(player.x, player.y + 1)) player.move(DirectionEnum.DOWN);
 				break;
 			case 'ArrowLeft':
-				if (player.isValidSpace(player.x - 1, player.y)) player.moveLeft();
+				if (player.isValidSpace(player.x - 1, player.y)) player.move(DirectionEnum.LEFT);
 				break;
 			case 'ArrowRight':
-				if (player.isValidSpace(player.x + 1, player.y)) player.moveRight();
+				if (player.isValidSpace(player.x + 1, player.y)) player.move(DirectionEnum.RIGHT);
 				break;
 			default: 
 				break;

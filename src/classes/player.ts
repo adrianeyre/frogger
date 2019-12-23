@@ -1,8 +1,12 @@
 import IFroggerProps from '../components/frogger/interfaces/frogger-props';
 
 import IPlayer from './interfaces/player';
+import DirectionEnum from './interfaces/direction-enum';
 
 import playerUp from '../images/player-up.png';
+import playerDown from '../images/player-down.png';
+import playerLeft from '../images/player-left.png';
+import playerRight from '../images/player-right.png';
 
 export default class Player implements IPlayer {
 	public key: string;
@@ -10,7 +14,7 @@ export default class Player implements IPlayer {
 	public y: number;
 	public height: number;
 	public width: number;
-	public direction: number;
+	public direction: DirectionEnum;
 	public score: number;
 	public lives: number;
 	public image: string;
@@ -21,6 +25,12 @@ export default class Player implements IPlayer {
 	readonly INITIAL_PLAYER_Y: number = 13;
 	readonly PLAYER_HEIGHT: number = 40;
 	readonly PLAYER_WIDTH: number = 40;
+	readonly playerImages: string[] = [
+		playerUp,
+		playerDown,
+		playerLeft,
+		playerRight,
+	]
 
 	constructor(config: IFroggerProps) {
 		this.key = 'player';
@@ -28,16 +38,26 @@ export default class Player implements IPlayer {
 		this.y = config.initialPlayerY || this.INITIAL_PLAYER_Y;
 		this.height = config.playerHeight || this.PLAYER_HEIGHT;
 		this.width = config.playerWidth || this.PLAYER_WIDTH;
-		this.direction = 0;
+		this.direction = DirectionEnum.UP;
 		this.score = 0;
 		this.lives = config.initialPlayerLives || this.INITIAL_PLAYER_LIVES;
-		this.image = playerUp;
+		this.image = this.playerImages[this.direction];
 		this.isAlive = true;
 	}
 
-	public moveUp = (): number => this.y --;
-	public moveDown = (): number => this.y ++;
-	public moveLeft = (): number => this.x --;
-	public moveRight = (): number => this.x ++;
+	public move = (direction: DirectionEnum): void => {
+		this.direction = direction
+		this.setImage();
+
+		switch (direction) {
+			case DirectionEnum.UP: this.y--; break;
+			case DirectionEnum.DOWN: this.y++; break;
+			case DirectionEnum.LEFT: this.x--; break;
+			case DirectionEnum.RIGHT: this.x++; break;
+		}
+	}
+
 	public isValidSpace = (x: number, y: number): boolean => x >= 1 && x <= 14 && y >= 1 && y <= 13;
+
+	private setImage = (): string => this.image = this.playerImages[this.direction];
 }

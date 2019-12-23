@@ -1,3 +1,5 @@
+import DirectionEnum from '../interfaces/direction-enum';
+
 import Player from '../player';
 
 describe('Player', () => {
@@ -17,28 +19,28 @@ describe('Player', () => {
 
 	it('Should move player up one space', () => {
 		const player = new Player({});
-		player.moveUp();
+		player.move(DirectionEnum.UP);
 
 		expect(player.y).toEqual(12);
 	});
 
 	it('Should move player down one space', () => {
 		const player = new Player({});
-		player.moveDown();
+		player.move(DirectionEnum.DOWN);
 
 		expect(player.y).toEqual(14);
 	});
 
 	it('Should move player right one space', () => {
 		const player = new Player({});
-		player.moveRight();
+		player.move(DirectionEnum.RIGHT);
 
 		expect(player.x).toEqual(8);
 	});
 
 	it('Should move player left one space', () => {
 		const player = new Player({});
-		player.moveLeft();
+		player.move(DirectionEnum.LEFT);
 
 		expect(player.x).toEqual(6);
 	});
