@@ -1,0 +1,28 @@
+$text-colour:				white;
+$hi-score-text-colour:		red;
+
+.game-status-top {
+	margin-top: 1em;
+	width: 800px;
+	position: absolute;
+	color: $text-colour;
+
+	.score-text {
+		color: $hi-score-text-colour;
+	}
+
+	.game-status-left {
+		margin-left: 20px;
+		float: left;
+	}
+	
+	.game-status-right {
+		margin-right: 20px;
+		float: right;
+	
+		.player-lives {
+			height: 1em;
+			width: 1.5em;
+		}
+	}
+}
