@@ -13,11 +13,12 @@ $hi-score-text-colour:		red;
 
 	.game-status-left {
 		margin-left: 20px;
+		margin-top: 10px;
 		float: left;
 
 		.player-lives {
-			height: 2em;
-			width: 2em;
+			height: 20px;
+			width: 20px;
 		}
 	}
 	

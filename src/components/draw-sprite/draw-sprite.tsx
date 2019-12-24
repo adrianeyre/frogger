@@ -19,8 +19,8 @@ export default class DrawSprite extends React.Component<IDrawSpriteProps, {}> {
 		width: 0,
 		height: 0,
 		opacity: 1,
-		WebkitTransform: `translate3d(${ (x - 1) * 57 + 10 }px, ${ y * 52 + 28 }px, 0)`,
-		transform: `translate3d(${ (x - 1) * 57 + 10 }px, ${ y * 52 + 28 }px, 0)`,
-		zIndex: 5000
+		WebkitTransform: `translate3d(${ (x - 1) * 57 + this.props.sprite.xOffset }px, ${ y * 52 + this.props.sprite.yOffset }px, 0)`,
+		transform: `translate3d(${ (x - 1) * 57 + this.props.sprite.xOffset }px, ${ y * 52 + this.props.sprite.yOffset }px, 0)`,
+		zIndex: this.props.sprite.zIndex,
 	})
 }

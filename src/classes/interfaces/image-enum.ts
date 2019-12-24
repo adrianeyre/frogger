@@ -5,6 +5,10 @@ enum ImageEnum {
 	CAR4 = 'car4',
 	LORRY_FRONT = 'lorryFront',
 	LORRY_BACK = 'lorryBack',
+	TURTLE1 = 'turtle1',
+	LOG_LEFT = 'logLeft',
+	LOG_CENTRE = 'logCentre',
+	LOG_RIGHT = 'logRight',
 }
 
 export default ImageEnum;

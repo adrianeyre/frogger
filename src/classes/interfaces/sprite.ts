@@ -5,6 +5,9 @@ export default interface ISprite {
 	key: string;
 	x: number;
 	y: number;
+	xOffset: number;
+	yOffset: number;
+	zIndex: number
 	height: number;
 	width: number;
 	direction: DirectionEnum;
