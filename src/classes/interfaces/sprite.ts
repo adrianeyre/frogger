@@ -3,6 +3,7 @@ import ImageEnum from './image-enum';
 
 export default interface ISprite {
 	key: string;
+	visable: boolean;
 	x: number;
 	y: number;
 	xOffset: number;
@@ -10,7 +11,8 @@ export default interface ISprite {
 	zIndex: number
 	height: number;
 	width: number;
-	direction: DirectionEnum;
+	direction: DirectionEnum | undefined;
 	image: ImageEnum;
-	speed: number;
+	speed: number | undefined;
+	move(): void;
 }

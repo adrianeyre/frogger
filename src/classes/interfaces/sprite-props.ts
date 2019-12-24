@@ -2,9 +2,12 @@ import DirectionEnum from './direction-enum';
 
 export default interface ISpriteProps {
 	key: string;
+	visable: boolean;
 	x: number;
 	y: number;
-	direction: DirectionEnum;
+	xOffset?: number;
+	yOffset?: number;
+	direction?: DirectionEnum;
 	image: string;
-	speed: number;
+	speed?: number;
 }

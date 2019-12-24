@@ -6,6 +6,7 @@ export default interface IFroggerState {
 	playAreaHeight: number;
 	player: IPlayer;
 	isGameInPlay: boolean;
+	isAlive: boolean;
 	time: number;
 	timer?: any;
 	sprites?: ISprites[];

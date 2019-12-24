@@ -2,6 +2,7 @@ import IFroggerProps from '../components/frogger/interfaces/frogger-props';
 
 import IPlayer from './interfaces/player';
 import DirectionEnum from './interfaces/direction-enum';
+import PlayerResultEnum from './interfaces/player-result-enum';
 
 import playerUp from '../images/player-up.png';
 import playerDown from '../images/player-down.png';
@@ -10,8 +11,11 @@ import playerRight from '../images/player-right.png';
 
 export default class Player implements IPlayer {
 	public key: string;
+	public visable: boolean;
 	public x: number;
 	public y: number;
+	public initialPlayerX: number;
+	public initialPlayerY: number;
 	public xOffset: number;
 	public yOffset: number;
 	public zIndex: number
@@ -21,6 +25,7 @@ export default class Player implements IPlayer {
 	public score: number;
 	public lives: number;
 	public image: string;
+	public lowestPoint: number;
 	public isAlive: boolean;
 
 	readonly INITIAL_PLAYER_LIVES: number = 5;
@@ -31,6 +36,8 @@ export default class Player implements IPlayer {
 	readonly X_OFFSET: number = 0;
 	readonly Y_OFFSET: number = 20;
 	readonly PLAYER_ZINDEX: number = 6000;
+	readonly SCORE_MOVING_UP: number = 10;
+	readonly SCORE_GETTING_HOME: number = 100;
 	readonly playerImages: string[] = [
 		playerUp,
 		playerDown,
@@ -40,8 +47,12 @@ export default class Player implements IPlayer {
 
 	constructor(config: IFroggerProps) {
 		this.key = 'player';
-		this.x = config.initialPlayerX || this.INITIAL_PLAYER_X;
-		this.y = config.initialPlayerY || this.INITIAL_PLAYER_Y;
+		this.visable = true;
+		this.initialPlayerX = config.initialPlayerX || this.INITIAL_PLAYER_X;
+		this.initialPlayerY = config.initialPlayerY || this.INITIAL_PLAYER_Y;
+		this.x = this.initialPlayerX;
+		this.y = this.initialPlayerY;
+		this.lowestPoint = 13;
 		this.xOffset = this.X_OFFSET;
 		this.yOffset = this.Y_OFFSET;
 		this.zIndex = this.PLAYER_ZINDEX;
@@ -54,19 +65,62 @@ export default class Player implements IPlayer {
 		this.isAlive = true;
 	}
 
-	public move = (direction: DirectionEnum): void => {
+	public move = (direction: DirectionEnum): PlayerResultEnum => {
 		this.direction = direction
 		this.setImage();
 
+		let x = this.x;
+		let y = this.y;
+
 		switch (direction) {
-			case DirectionEnum.UP: this.y--; break;
-			case DirectionEnum.DOWN: this.y++; break;
-			case DirectionEnum.LEFT: this.x--; break;
-			case DirectionEnum.RIGHT: this.x++; break;
+			case DirectionEnum.UP: y--; break;
+			case DirectionEnum.DOWN: y++; break;
+			case DirectionEnum.LEFT: x--; break;
+			case DirectionEnum.RIGHT: x++; break;
 		}
+
+		if (!this.isValidSpace(x, y)) return PlayerResultEnum.NO_MOVE;
+		const isHome = this.isHome(x, y);
+
+		if (isHome) {
+			this.score += this.SCORE_GETTING_HOME;
+			return isHome;
+		}
+
+		this.x = x;
+		this.y = y;
+
+		if (this.y < this.lowestPoint) {
+			this.lowestPoint = this.y;
+			this.score += this.SCORE_MOVING_UP;
+		}
+
+		return PlayerResultEnum.SAFE;
 	}
 
-	public isValidSpace = (x: number, y: number): boolean => x >= 1 && x <= 14 && y >= 1 && y <= 13;
+	public resetPlayerToStart = () => {
+		this.x = this.initialPlayerX;
+		this.y = this.initialPlayerY;
+		this.lowestPoint = 13;
+	}
+
+	public looseLife = (): boolean => {
+		this.lives --;
+
+		return this.lives > 0;
+	}
+
+	private isValidSpace = (x: number, y: number): boolean => x >= 1 && x <= 14 && y >= 1 && y <= 13;
+
+	private isHome = (x: number, y: number): number => {
+		if (y !== 1) return 0;
+		if (x === 1 || x === 2) return 5;
+		if (x === 4 || x === 5) return 6;
+		if (x === 7 || x === 8) return 7;
+		if (x === 10 || x === 11) return 8;
+		if (x === 13 || x === 14) return 9;
+		return PlayerResultEnum.DEAD;
+	}
 
 	private setImage = (): string => this.image = this.playerImages[this.direction];
 }

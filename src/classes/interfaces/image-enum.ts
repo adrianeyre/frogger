@@ -9,6 +9,7 @@ enum ImageEnum {
 	LOG_LEFT = 'logLeft',
 	LOG_CENTRE = 'logCentre',
 	LOG_RIGHT = 'logRight',
+	PLAYER_HOME = 'playerHome',
 }
 
 export default ImageEnum;

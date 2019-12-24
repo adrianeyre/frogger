@@ -5,6 +5,8 @@ import IDrawSpriteProps from './interfaces/draw-sprite-props';
 export default class DrawSprite extends React.Component<IDrawSpriteProps, {}> {
 
 	public render() {
+		if (!this.props.sprite.visable) return <div></div>
+
 		return <div key={ this.props.sprite.key } style={ this.styleSprite(this.props.sprite.x, this.props.sprite.y) }>
 			<img
 				src={ this.props.sprite.image }
