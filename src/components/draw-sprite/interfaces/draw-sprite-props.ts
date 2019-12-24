@@ -1,6 +1,6 @@
 import IPlayer from '../../../classes/interfaces/player';
+import ISprite from '../../../classes/interfaces/sprite';
 
 export default interface IDrawSpriteProps {
-	sprite: IPlayer
-	image: string;
+	sprite: IPlayer | ISprite;
 }

@@ -1,4 +1,5 @@
 import IPlayer from '../../../classes/interfaces/player';
+import ISprites from '../../../classes/interfaces/sprite';
 
 export default interface IFroggerState {
 	playAreaWidth: number;
@@ -6,5 +7,6 @@ export default interface IFroggerState {
 	player: IPlayer;
 	isGameInPlay: boolean;
 	time: number;
-	timer?: any
+	timer?: any;
+	sprites?: ISprites[];
 }

@@ -7,7 +7,7 @@ export default class DrawSprite extends React.Component<IDrawSpriteProps, {}> {
 	public render() {
 		return <div key={ this.props.sprite.key } style={ this.styleSprite(this.props.sprite.x, this.props.sprite.y) }>
 			<img
-				src={ this.props.image }
+				src={ this.props.sprite.image }
 				height={ this.props.sprite.height }
 				width={ this.props.sprite.width }
 				alt="sprite"
