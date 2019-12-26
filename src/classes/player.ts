@@ -1,8 +1,8 @@
 import IFroggerProps from '../components/frogger/interfaces/frogger-props';
 
 import IPlayer from './interfaces/player';
-import DirectionEnum from './interfaces/direction-enum';
-import PlayerResultEnum from './interfaces/player-result-enum';
+import DirectionEnum from './enums/direction-enum';
+import PlayerResultEnum from './enums/player-result-enum';
 
 import playerUp from '../images/player-up.png';
 import playerDown from '../images/player-down.png';
@@ -27,6 +27,7 @@ export default class Player implements IPlayer {
 	public image: string;
 	public lowestPoint: number;
 	public isAlive: boolean;
+	public frogsHomeCount: number;
 
 	readonly INITIAL_PLAYER_LIVES: number = 5;
 	readonly INITIAL_PLAYER_X: number = 7;
@@ -38,6 +39,7 @@ export default class Player implements IPlayer {
 	readonly PLAYER_ZINDEX: number = 6000;
 	readonly SCORE_MOVING_UP: number = 10;
 	readonly SCORE_GETTING_HOME: number = 100;
+	readonly SCORE_LEVEL_COMPLETE: number = 1000;
 	readonly playerImages: string[] = [
 		playerUp,
 		playerDown,
@@ -63,9 +65,11 @@ export default class Player implements IPlayer {
 		this.lives = config.initialPlayerLives || this.INITIAL_PLAYER_LIVES;
 		this.image = this.playerImages[this.direction];
 		this.isAlive = true;
+		this.frogsHomeCount = 0;
 	}
 
 	public move = (direction: DirectionEnum): PlayerResultEnum => {
+		let result = PlayerResultEnum.SAFE;
 		this.direction = direction
 		this.setImage();
 
@@ -84,8 +88,15 @@ export default class Player implements IPlayer {
 
 		if (isHome) {
 			this.score += this.SCORE_GETTING_HOME;
-			return isHome;
+			this.frogsHomeCount ++;
+
+			if (this.frogsHomeCount < 5) return isHome;
+
+			this.score += this.SCORE_LEVEL_COMPLETE;
+			return PlayerResultEnum.LEVEL_COMPLETE
 		}
+
+		if (this.isInWater(x, y)) result = PlayerResultEnum.OVER_WATER;
 
 		this.x = x;
 		this.y = y;
@@ -95,7 +106,7 @@ export default class Player implements IPlayer {
 			this.score += this.SCORE_MOVING_UP;
 		}
 
-		return PlayerResultEnum.SAFE;
+		return result
 	}
 
 	public resetPlayerToStart = () => {
@@ -109,6 +120,8 @@ export default class Player implements IPlayer {
 
 		return this.lives > 0;
 	}
+
+	private isInWater = (x: number, y: number): boolean => y > 1 && y < 7;
 
 	private isValidSpace = (x: number, y: number): boolean => x >= 1 && x <= 14 && y >= 1 && y <= 13;
 

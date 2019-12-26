@@ -1,5 +1,5 @@
-import DirectionEnum from './direction-enum';
-import PlayerResultEnum from './player-result-enum';
+import DirectionEnum from '../enums/direction-enum';
+import PlayerResultEnum from '../enums/player-result-enum';
 
 export default interface IPlayer {
 	key: string;
@@ -19,6 +19,7 @@ export default interface IPlayer {
 	image: string;
 	lowestPoint: number;
 	isAlive: boolean;
+	frogsHomeCount: number;
 	move(direction: DirectionEnum): PlayerResultEnum;
 	resetPlayerToStart(): void;
 	looseLife(): boolean;

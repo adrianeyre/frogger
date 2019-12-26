@@ -1,4 +1,4 @@
-import DirectionEnum from '../interfaces/direction-enum';
+import DirectionEnum from '../enums/direction-enum';
 
 import Player from '../player';
 

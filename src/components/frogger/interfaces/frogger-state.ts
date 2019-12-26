@@ -1,13 +1,8 @@
-import IPlayer from '../../../classes/interfaces/player';
-import ISprites from '../../../classes/interfaces/sprite';
+import IGame from '../../../classes/interfaces/game';
 
 export default interface IFroggerState {
+	game: IGame;
 	playAreaWidth: number;
 	playAreaHeight: number;
-	player: IPlayer;
-	isGameInPlay: boolean;
-	isAlive: boolean;
-	time: number;
 	timer?: any;
-	sprites?: ISprites[];
 }

@@ -1,4 +1,5 @@
-import DirectionEnum from './direction-enum';
+import DirectionEnum from '../enums/direction-enum';
+import SpriteTypeEnum from '../enums/sprite-type-enum';
 
 export default interface ISpriteProps {
 	key: string;
@@ -10,4 +11,5 @@ export default interface ISpriteProps {
 	direction?: DirectionEnum;
 	image: string;
 	speed?: number;
+	type: SpriteTypeEnum;
 }

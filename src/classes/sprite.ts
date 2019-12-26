@@ -1,7 +1,9 @@
 import ISpriteProps from './interfaces/sprite-props';
 import ISprite from './interfaces/sprite';
-import DirectionEnum from './interfaces/direction-enum';
-import ImageEnum from './interfaces/image-enum';
+import DirectionEnum from './enums/direction-enum';
+import PlayerResultEnum from './enums/player-result-enum';
+import SpriteTypeEnum from './enums/sprite-type-enum';
+import ImageEnum from './enums/image-enum';
 
 import car1 from '../images/car1.png';
 import car2 from '../images/car2.png';
@@ -28,6 +30,7 @@ export default class Sprite implements ISprite {
 	public direction: DirectionEnum | undefined;
 	public image: ImageEnum;
 	public speed: number | undefined;
+	public type: SpriteTypeEnum;
 
 	readonly SPRITE_HEIGHT: number = 55;
 	readonly SPRITE_WIDTH: number = 61.5;
@@ -60,20 +63,40 @@ export default class Sprite implements ISprite {
 		this.width = this.SPRITE_WIDTH;
 		this.direction = config.direction ? config.direction : undefined;
 		this.image = this.playerImages[config.image];
-		this.speed = config.speed
+		this.speed = config.speed;
+		this.type = config.type;
 	}
 
-	public move = (): void => {
+	public move = (playerX: number, playerY: number): PlayerResultEnum => {
+		let result = PlayerResultEnum.NO_MOVE;
+		
+		if (this.type === SpriteTypeEnum.RAFT) {
+			result = this.checkClash(playerX, playerY);
+		}	
+
 		switch (this.direction) {
 			case DirectionEnum.LEFT: this.x --; break;
 			case DirectionEnum.RIGHT: this.x ++; break;
 		}
 
-		if (this.x < 0) {
-			this.x = 14;
-			return;
+		if (this.x < 0) this.x = 14;
+		if (this.x > 14) this.x = 1;
+
+		if (this.type !== SpriteTypeEnum.RAFT) {
+			result = this.checkClash(playerX, playerY);
 		}
 
-		if (this.x > 14) this.x = 1;
+		return result;
+	}
+
+	public checkClash = (playerX: number, playerY: number): PlayerResultEnum => {
+		
+		if (this.x === playerX && this.y === playerY) {
+			// if (this.type === SpriteTypeEnum.VEHICLE) return PlayerResultEnum.DEAD;
+			if (this.type === SpriteTypeEnum.RAFT && this.direction === DirectionEnum.LEFT) return PlayerResultEnum.ARROW_LEFT;
+			if (this.type === SpriteTypeEnum.RAFT && this.direction === DirectionEnum.RIGHT) return PlayerResultEnum.ARROW_RIGHT;
+		}
+
+		return PlayerResultEnum.SAFE
 	}
 }

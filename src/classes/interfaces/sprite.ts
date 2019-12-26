@@ -1,5 +1,7 @@
-import DirectionEnum from './direction-enum';
-import ImageEnum from './image-enum';
+import DirectionEnum from '../enums/direction-enum';
+import PlayerResultEnum from '../enums/player-result-enum';
+import SpriteTypeEnum from '../enums/sprite-type-enum';
+import ImageEnum from '../enums/image-enum';
 
 export default interface ISprite {
 	key: string;
@@ -14,5 +16,7 @@ export default interface ISprite {
 	direction: DirectionEnum | undefined;
 	image: ImageEnum;
 	speed: number | undefined;
-	move(): void;
+	type: SpriteTypeEnum;
+	move(playerX: number, playerY: number): PlayerResultEnum;
+	checkClash(playerX: number, playerY: number): PlayerResultEnum;
 }
