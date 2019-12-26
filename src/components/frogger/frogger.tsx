@@ -51,7 +51,7 @@ export default class Frogger extends React.Component<IFroggerProps, IFroggerStat
 				<DrawSprite sprite={ this.state.game.player } />
 			</div> }
 
-			<GameStatusBottom lives={ this.state.game.player.lives } timer={ this.state.game.time } />
+			<GameStatusBottom lives={ this.state.game.player.lives - 1 } level={ this.state.game.level } timer={ this.state.game.time } />
 		</div>
 	}
 

@@ -1,19 +1,21 @@
-$text-colour:				white;
-$hi-score-text-colour:		red;
+@import '../../default-styles/colours.scss';
 
 .game-status-bottom {
-	width: 800px;
+	width: 770px;
 	top: 760px;
 	position: absolute;
-	color: $text-colour;
+	color: $info-bar-text-colour;
+	content: "";
+	display: table;
+	clear: both;
+	padding: 5px 10px;
 
-	.score-text {
-		color: $hi-score-text-colour;
+	.variable-text {
+		color: $variable-text-colour;
 	}
 
 	.game-status-left {
-		margin-left: 20px;
-		margin-top: 10px;
+		width: 340px;
 		float: left;
 
 		.player-lives {
@@ -21,10 +23,15 @@ $hi-score-text-colour:		red;
 			width: 20px;
 		}
 	}
+
+	.game-status-centre {
+		float: left;
+		width: 150px;
+	}
 	
 	.game-status-right {
-		margin-right: 20px;
-		margin-top: 10px;
+		text-align: right;
 		float: right;
+		width: 256.66px;
 	}
 }

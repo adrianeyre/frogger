@@ -6,15 +6,24 @@ describe('Player', () => {
 	it('Should create Player class', () => {
 		const player = new Player({});
 
-		expect(player.height).toEqual(40);
-		expect(player.width).toEqual(40);
-		expect(player.isAlive).toEqual(true);
 		expect(player.key).toEqual('player');
-		expect(player.image).toEqual('player-up.png');
-		expect(player.lives).toEqual(5);
-		expect(player.score).toEqual(0);
+		expect(player.visable).toEqual(true);
 		expect(player.x).toEqual(7);
 		expect(player.y).toEqual(13);
+		expect(player.lowestPoint).toEqual(13);
+		expect(player.initialPlayerX).toEqual(7);
+		expect(player.initialPlayerY).toEqual(13);
+		expect(player.xOffset).toEqual(0);
+		expect(player.yOffset).toEqual(20);
+		expect(player.zIndex).toEqual(6000);
+		expect(player.height).toEqual(55);
+		expect(player.width).toEqual(61.5);
+		expect(player.direction).toEqual(DirectionEnum.UP);
+		expect(player.score).toEqual(0);
+		expect(player.lives).toEqual(5);
+		expect(player.image).toEqual('player-up.png');
+		expect(player.isAlive).toEqual(true);
+		expect(player.frogsHomeCount).toEqual(0);
 	});
 
 	it('Should move player up one space', () => {
@@ -26,9 +35,10 @@ describe('Player', () => {
 
 	it('Should move player down one space', () => {
 		const player = new Player({});
+		player.y = 10
 		player.move(DirectionEnum.DOWN);
 
-		expect(player.y).toEqual(14);
+		expect(player.y).toEqual(11);
 	});
 
 	it('Should move player right one space', () => {
@@ -45,18 +55,32 @@ describe('Player', () => {
 		expect(player.x).toEqual(6);
 	});
 
-	it('Should be a valid space', () => {
+	it('Should reset player', () => {
 		const player = new Player({});
+		player.x = 1;
+		player.y = 1;
+		player.lowestPoint = 1;
+		player.resetPlayerToStart();
 
-		expect(player.isValidSpace(player.x, player.y)).toEqual(true);
+		expect(player.x).toEqual(7);
+		expect(player.y).toEqual(13);
+		expect(player.lowestPoint).toEqual(13);
 	});
 
-	it('Should be a invalid space', () => {
+	it('Should loose a life', () => {
 		const player = new Player({});
 
-		expect(player.isValidSpace(0, 1)).toEqual(false);
-		expect(player.isValidSpace(15, 1)).toEqual(false);
-		expect(player.isValidSpace(1, 0)).toEqual(false);
-		expect(player.isValidSpace(1, 14)).toEqual(false);
+		expect(player.lives).toEqual(5);
+		expect(player.looseLife()).toEqual(true);
+		expect(player.lives).toEqual(4);
+		expect(player.looseLife()).toEqual(true);
+		expect(player.lives).toEqual(3);
+		expect(player.looseLife()).toEqual(true);
+		expect(player.lives).toEqual(2);
+		expect(player.looseLife()).toEqual(true);
+		expect(player.lives).toEqual(1);
+		expect(player.looseLife()).toEqual(false);
+		expect(player.lives).toEqual(0);
+		expect(player.looseLife()).toEqual(false);
 	});
 });

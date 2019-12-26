@@ -1,14 +1,13 @@
-$text-colour:				white;
-$hi-score-text-colour:		red;
+@import '../../default-styles/colours.scss';
 
 .game-status-top {
 	margin-top: 1em;
 	width: 800px;
 	position: absolute;
-	color: $text-colour;
+	color: $info-bar-text-colour;
 
-	.score-text {
-		color: $hi-score-text-colour;
+	.variable-text {
+		color: $variable-text-colour;
 	}
 
 	.game-status-left {

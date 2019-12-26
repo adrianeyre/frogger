@@ -38,7 +38,7 @@ export default class Player implements IPlayer {
 	readonly Y_OFFSET: number = 20;
 	readonly PLAYER_ZINDEX: number = 6000;
 	readonly SCORE_MOVING_UP: number = 10;
-	readonly SCORE_GETTING_HOME: number = 100;
+	readonly SCORE_GETTING_HOME: number = 50;
 	readonly SCORE_LEVEL_COMPLETE: number = 1000;
 	readonly playerImages: string[] = [
 		playerUp,

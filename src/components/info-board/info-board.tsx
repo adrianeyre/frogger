@@ -24,7 +24,7 @@ export default class InfoBoard extends React.Component<IInfoBoardProps, {}> {
 
 			<div className="info-board-instructions">
 				<ul>
-					<li>You control Frogger, guiding him in four directions with the joystick.</li>
+					<li>You control Frogger, guiding him in four directions with the arrow keys.</li>
 					<li>You must guide Frogger to each of the five empty slots at the top of the screen in order to advance to the next stage.</li>
 					<li>You start at the bottom of the screen beneath five lanes of traffic.</li>
 					<li>You must reach the sidewalk in the middle of the screen without getting hit by any vehicles.</li>

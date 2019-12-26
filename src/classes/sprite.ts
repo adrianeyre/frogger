@@ -92,7 +92,7 @@ export default class Sprite implements ISprite {
 	public checkClash = (playerX: number, playerY: number): PlayerResultEnum => {
 		
 		if (this.x === playerX && this.y === playerY) {
-			// if (this.type === SpriteTypeEnum.VEHICLE) return PlayerResultEnum.DEAD;
+			if (this.type === SpriteTypeEnum.VEHICLE) return PlayerResultEnum.DEAD;
 			if (this.type === SpriteTypeEnum.RAFT && this.direction === DirectionEnum.LEFT) return PlayerResultEnum.ARROW_LEFT;
 			if (this.type === SpriteTypeEnum.RAFT && this.direction === DirectionEnum.RIGHT) return PlayerResultEnum.ARROW_RIGHT;
 		}
