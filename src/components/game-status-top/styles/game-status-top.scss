@@ -2,26 +2,39 @@
 
 .game-status-top {
 	margin-top: 1em;
-	width: 800px;
+	width: 100%;
 	position: absolute;
 	color: $info-bar-text-colour;
+	font-size: 1em;
 
 	.variable-text {
 		color: $variable-text-colour;
 	}
 
 	.game-status-left {
-		margin-left: 20px;
+		margin-left: 1em;
 		float: left;
 	}
 	
 	.game-status-right {
-		margin-right: 20px;
+		margin-right: 1em;
 		float: right;
 	
 		.player-lives {
 			height: 1em;
 			width: 1.5em;
 		}
+	}
+}
+
+@media (max-width: 600px) {
+	.game-status-top {
+		font-size: 0.8em;
+	}
+}
+
+@media (max-width: 500px) {
+	.game-status-top {
+		font-size: 0.5em;
 	}
 }

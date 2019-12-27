@@ -14,8 +14,7 @@ describe('Sprite', () => {
 			visable: true,
 			x: 10,
 			y: 10,
-			xOffset: 0,
-			yOffset: 0,
+			xOffset: false,
 			direction: DirectionEnum.RIGHT,
 			image: 'car1',
 			speed: 10,
@@ -30,11 +29,8 @@ describe('Sprite', () => {
 		expect(sprite.visable).toEqual(true);
 		expect(sprite.x).toEqual(10);
 		expect(sprite.y).toEqual(10);
-		expect(sprite.xOffset).toEqual(0);
-		expect(sprite.yOffset).toEqual(20);
+		expect(sprite.xOffset).toEqual(false);
 		expect(sprite.zIndex).toEqual(5000);
-		expect(sprite.height).toEqual(55);
-		expect(sprite.width).toEqual(61.5);
 		expect(sprite.direction).toEqual(DirectionEnum.RIGHT);
 		expect(sprite.image).toEqual('car1.png');
 		expect(sprite.speed).toEqual(10);

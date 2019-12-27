@@ -1,12 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap);
 
 .frogger-play-container {
-	width: 800px;
-	height: 800px;
+	width: 100%;
+	height: 100vh;
 	font-family: 'Press Start 2P', cursive;
 	background-image: url("../../../images/background.png");
-	background-color: #cccccc;
+	background-color: black;
 	background-repeat: no-repeat, repeat;
+	background-size: 100% auto;
 	overflow-y: hidden;
 	overflow-x: hidden;
 	margin: 0;

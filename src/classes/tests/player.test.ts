@@ -13,11 +13,8 @@ describe('Player', () => {
 		expect(player.lowestPoint).toEqual(13);
 		expect(player.initialPlayerX).toEqual(7);
 		expect(player.initialPlayerY).toEqual(13);
-		expect(player.xOffset).toEqual(0);
-		expect(player.yOffset).toEqual(20);
+		expect(player.xOffset).toEqual(false);
 		expect(player.zIndex).toEqual(6000);
-		expect(player.height).toEqual(55);
-		expect(player.width).toEqual(61.5);
 		expect(player.direction).toEqual(DirectionEnum.UP);
 		expect(player.score).toEqual(0);
 		expect(player.lives).toEqual(5);

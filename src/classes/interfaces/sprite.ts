@@ -8,11 +8,8 @@ export default interface ISprite {
 	visable: boolean;
 	x: number;
 	y: number;
-	xOffset: number;
-	yOffset: number;
+	xOffset: boolean;
 	zIndex: number
-	height: number;
-	width: number;
 	direction: DirectionEnum | undefined;
 	image: ImageEnum;
 	speed: number | undefined;

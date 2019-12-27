@@ -1,37 +1,49 @@
 @import '../../default-styles/colours.scss';
 
 .game-status-bottom {
-	width: 770px;
-	top: 760px;
+	width: 100%;
 	position: absolute;
 	color: $info-bar-text-colour;
 	content: "";
 	display: table;
 	clear: both;
-	padding: 5px 10px;
 
 	.variable-text {
 		color: $variable-text-colour;
 	}
 
 	.game-status-left {
-		width: 340px;
+		width: 40%;
+		margin-left: 1em;
 		float: left;
 
 		.player-lives {
-			height: 20px;
-			width: 20px;
+			height: 1.5em;
+			width: 1.5em;
 		}
 	}
 
 	.game-status-centre {
 		float: left;
-		width: 150px;
+		width: 25%;
 	}
 	
 	.game-status-right {
 		text-align: right;
 		float: right;
-		width: 256.66px;
+		margin-right: 1em;
+		width: 25%;
+	}
+}
+
+@media (max-width: 600px) {
+	.game-status-bottom {
+		font-size: 0.8em;
+	}
+}
+
+@media (max-width: 500px) {
+	.game-status-bottom {
+		font-size: 0.5em;
 	}
 }

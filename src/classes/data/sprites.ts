@@ -579,7 +579,7 @@ const sprites: ISpriteProps[] = [
 		x: 2,
 		y: 1,
 		image: ImageEnum.PLAYER_HOME,
-		xOffset: -30,
+		xOffset: true,
 		type: SpriteTypeEnum.HOME
 	},
 	{
@@ -588,7 +588,7 @@ const sprites: ISpriteProps[] = [
 		x: 5,
 		y: 1,
 		image: ImageEnum.PLAYER_HOME,
-		xOffset: -30,
+		xOffset: true,
 		type: SpriteTypeEnum.HOME
 	},
 	{
@@ -597,7 +597,7 @@ const sprites: ISpriteProps[] = [
 		x: 8,
 		y: 1,
 		image: ImageEnum.PLAYER_HOME,
-		xOffset: -30,
+		xOffset: true,
 		type: SpriteTypeEnum.HOME
 	},
 	{
@@ -606,7 +606,7 @@ const sprites: ISpriteProps[] = [
 		x: 11,
 		y: 1,
 		image: ImageEnum.PLAYER_HOME,
-		xOffset: -30,
+		xOffset: true,
 		type: SpriteTypeEnum.HOME
 	},
 	{
@@ -615,7 +615,7 @@ const sprites: ISpriteProps[] = [
 		x: 14,
 		y: 1,
 		image: ImageEnum.PLAYER_HOME,
-		xOffset: -30,
+		xOffset: true,
 		type: SpriteTypeEnum.HOME
 	}
 ]

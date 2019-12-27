@@ -16,11 +16,8 @@ export default class Player implements IPlayer {
 	public y: number;
 	public initialPlayerX: number;
 	public initialPlayerY: number;
-	public xOffset: number;
-	public yOffset: number;
+	public xOffset: boolean;
 	public zIndex: number
-	public height: number;
-	public width: number;
 	public direction: DirectionEnum;
 	public score: number;
 	public lives: number;
@@ -32,10 +29,7 @@ export default class Player implements IPlayer {
 	readonly INITIAL_PLAYER_LIVES: number = 5;
 	readonly INITIAL_PLAYER_X: number = 7;
 	readonly INITIAL_PLAYER_Y: number = 13;
-	readonly PLAYER_HEIGHT: number = 55;
-	readonly PLAYER_WIDTH: number = 61.5;
-	readonly X_OFFSET: number = 0;
-	readonly Y_OFFSET: number = 20;
+	readonly X_OFFSET: boolean = false;
 	readonly PLAYER_ZINDEX: number = 6000;
 	readonly SCORE_MOVING_UP: number = 10;
 	readonly SCORE_GETTING_HOME: number = 50;
@@ -56,10 +50,7 @@ export default class Player implements IPlayer {
 		this.y = this.initialPlayerY;
 		this.lowestPoint = 13;
 		this.xOffset = this.X_OFFSET;
-		this.yOffset = this.Y_OFFSET;
 		this.zIndex = this.PLAYER_ZINDEX;
-		this.height = config.playerHeight || this.PLAYER_HEIGHT;
-		this.width = config.playerWidth || this.PLAYER_WIDTH;
 		this.direction = DirectionEnum.UP;
 		this.score = 0;
 		this.lives = config.initialPlayerLives || this.INITIAL_PLAYER_LIVES;

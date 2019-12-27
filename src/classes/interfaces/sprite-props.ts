@@ -6,8 +6,7 @@ export default interface ISpriteProps {
 	visable: boolean;
 	x: number;
 	y: number;
-	xOffset?: number;
-	yOffset?: number;
+	xOffset?: boolean;
 	direction?: DirectionEnum;
 	image: string;
 	speed?: number;

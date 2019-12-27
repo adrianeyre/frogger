@@ -3,11 +3,12 @@ $info-board-background: white;
 .info-board {
 	position: absolute;
 	background-color: $info-board-background;;
-	opacity: 0.7;
-	margin-top: 120px;
-	margin-left: 40px;
-	width: 710px;
-	height: 580px;
+	opacity: 0.9;
+	z-index: 10000;
+	margin-top: 18%;
+	margin-left: 10%;
+	width: 80%;
+	height: 60%;
 
 	.game-over-area {
 		margin: 2em;
@@ -48,8 +49,9 @@ $info-board-background: white;
 
 	.button-area {
 		position: absolute;
-		top: 520px;
-		left: calc(50% - 104px);
+		top: 85%;
+		left: 30%;
+		width: 60%;
 
 		button {
 			font-family: 'Press Start 2P', cursive;
@@ -62,7 +64,7 @@ $info-board-background: white;
 			text-align: center;
 			text-decoration: none;
 			display: inline-block;
-			font-size: 16px;
+			font-size: 1.5em;
 			box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 		}
 
@@ -70,6 +72,26 @@ $info-board-background: white;
 			background-color: white;
 			color: #008CBA;
 			box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+		}
+	}
+}
+
+@media (max-width: 600px) {
+	.info-board {
+		font-size: 0.8em;
+
+		.button-area {
+			left: 20%;
+		}
+	}
+}
+
+@media (max-width: 500px) {
+	.info-board {
+		font-size: 0.5em;
+
+		.button-area {
+			left: 20%;
 		}
 	}
 }

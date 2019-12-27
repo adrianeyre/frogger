@@ -22,20 +22,14 @@ export default class Sprite implements ISprite {
 	public visable: boolean;
 	public x: number;
 	public y: number;
-	public xOffset: number;
-	public yOffset: number;
+	public xOffset: boolean;
 	public zIndex: number;
-	public height: number;
-	public width: number;
 	public direction: DirectionEnum | undefined;
 	public image: ImageEnum;
 	public speed: number | undefined;
 	public type: SpriteTypeEnum;
 
-	readonly SPRITE_HEIGHT: number = 55;
-	readonly SPRITE_WIDTH: number = 61.5;
-	readonly X_OFFSET: number = 0;
-	readonly Y_OFFSET: number = 20;
+	readonly X_OFFSET: boolean = false;
 	readonly Z_INDEX: number = 5000;
 	readonly playerImages = {
 		car1,
@@ -57,10 +51,7 @@ export default class Sprite implements ISprite {
 		this.x = config.x;
 		this.y = config.y;
 		this.xOffset = config.xOffset ? config.xOffset : this.X_OFFSET;
-		this.yOffset = config.yOffset ? config.yOffset : this.Y_OFFSET;
 		this.zIndex = this.Z_INDEX;
-		this.height = this.SPRITE_HEIGHT;
-		this.width = this.SPRITE_WIDTH;
 		this.direction = config.direction ? config.direction : undefined;
 		this.image = this.playerImages[config.image];
 		this.speed = config.speed;
