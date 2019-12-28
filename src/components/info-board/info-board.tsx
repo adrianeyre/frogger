@@ -8,9 +8,8 @@ import playerRight from '../../images/player-right.png';
 import './styles/info-board.scss';
 
 export default class InfoBoard extends React.Component<IInfoBoardProps, {}> {
-
 	public render() {
-		return <div className="info-board">
+		return <div className="info-board" style={ this.styleInfoBoard() }>
 			<div className="info-board-header">
 				<img src={ playerRight } alt="player" />
 				<span className="header-text">Frogger</span>
@@ -39,4 +38,9 @@ export default class InfoBoard extends React.Component<IInfoBoardProps, {}> {
 			</div>
 		</div>
 	}
+
+	private styleInfoBoard = () => ({
+		width: `100%`,
+		maxWidth: `${ this.props.containerHeight }px`,
+	})
 }
