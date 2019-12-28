@@ -15,9 +15,6 @@ import PlayerResultEnum from 'classes/enums/player-result-enum';
 export default class Frogger extends React.Component<IFroggerProps, IFroggerState> {
 	private DEFAULT_TIMER_INTERVAL: number = 10;
 	private container: any;
-	private touchX: number = 0;
-	private touchY: number = 0;
-	private tocuchDirection?: PlayerResultEnum;
 
 	constructor(props: IFroggerProps) {
 		super(props);
@@ -31,8 +28,6 @@ export default class Frogger extends React.Component<IFroggerProps, IFroggerStat
 		}
 
 		this.handleKeyDown = this.handleKeyDown.bind(this);
-		this.handleTouchStart = this.handleTouchStart.bind(this);
-		this.handleTouchEnd = this.handleTouchEnd.bind(this);
 		this.styleContainer = this.styleContainer.bind(this);
 	}
 
@@ -40,16 +35,12 @@ export default class Frogger extends React.Component<IFroggerProps, IFroggerStat
 		this.updatePlayerArea();
 		window.addEventListener('resize', this.updatePlayerArea);
 		window.addEventListener('keydown', this.handleKeyDown);
-		window.addEventListener("touchmove", this.handleTouchStart, false);
-		window.addEventListener("touchend", this.handleTouchEnd, false);
 	}
 
 	public async componentWillUnmount() {
 		await this.stopTimer();
 		window.removeEventListener('resize', this.updatePlayerArea);
 		window.removeEventListener('keydown', this.handleKeyDown);
-		window.removeEventListener("touchmove", this.handleTouchStart);
-		window.removeEventListener("touchend", this.handleTouchEnd);
 	}
 
 	public render() {
@@ -123,32 +114,6 @@ export default class Frogger extends React.Component<IFroggerProps, IFroggerStat
 		if (!this.state.game.isGameInPlay) return;
 
 		await this.handleInput(event.keyCode);
-	}
-
-	private handleTouchStart = (data: any): void => {
-		if (data.touches[0]) {
-			const x = data.touches[0].pageX;
-			const y = data.touches[0].pageY;
-			
-			const direction = {
-				38: this.touchY > y,
-				40: this.touchY < y,
-				39: this.touchX < x,
-				37: this.touchX > x,
-			}
-
-			const result = Object.keys(direction).sort(function(a,b){return direction[a]-direction[b]}).pop();
-			if (result) this.tocuchDirection = parseInt(result);
-
-			this.touchX = x;
-			this.touchY = y;
-		}
-	}
-
-	private handleTouchEnd = async (): Promise<void> => {
-		if (!this.state.game.isGameInPlay || !this.tocuchDirection) return;
-
-		await this.handleInput(this.tocuchDirection);
 	}
 
 	private handleMobileButton = async (direction: PlayerResultEnum): Promise<void> => await this.handleInput(direction);
