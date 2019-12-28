@@ -2,6 +2,8 @@
 
 #### Technologies: TypeScript, React, SCSS
 
+A remake of the classic game Frogger where you have to navigate the frog safely through the traffic, over the river to reach your home. This a web based application that is mobile device friendly and adapts its size accordingly.
+
 ## Index
 * [Installation and Run](#Install)
 * [Screen Shots](#Shots)
