@@ -6,5 +6,6 @@ export default interface IFroggerState {
 	spriteHeight: number;
 	containerWidth: number
 	containerHeight: number;
+	containerMargin: number;
 	timer?: any;
 }
