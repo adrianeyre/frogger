@@ -24,7 +24,6 @@ export default class Frogger extends React.Component<IFroggerProps, IFroggerStat
 			spriteHeight: 0,
 			containerWidth: 800,
 			containerHeight: 800,
-			containerMargin: 0,
 			game: new Game(this.props),
 		}
 
@@ -64,7 +63,6 @@ export default class Frogger extends React.Component<IFroggerProps, IFroggerStat
 
 	private styleContainer = () => ({
 		maxWidth: `${ this.state.containerHeight }px`,
-		marginLeft: `${ this.state.containerMargin }px`
 	})
 
 	private styleStatusTop = () => ({
@@ -98,11 +96,10 @@ export default class Frogger extends React.Component<IFroggerProps, IFroggerStat
 	private updatePlayerArea = (): void => {
 		const containerHeight = this.container && this.container.getBoundingClientRect().height;
 		let containerWidth = this.container && this.container.getBoundingClientRect().width;
-		const containerMargin = (window.innerWidth - containerHeight) / 2;
 		if (containerWidth > containerHeight) containerWidth = containerHeight;
 		const spriteWidth = containerWidth / 14;
 		const spriteHeight = ((containerWidth / 100) * 85 ) / 13;
-		this.setState(() => ({ spriteWidth, spriteHeight, containerWidth, containerHeight, containerMargin }))
+		this.setState(() => ({ spriteWidth, spriteHeight, containerWidth, containerHeight }))
 	}
 
 	private handleInput = async (input: PlayerResultEnum): Promise<void> => {
