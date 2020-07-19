@@ -11,7 +11,7 @@
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
     "acorn": "^7.1.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "minimist": "^1.2.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
