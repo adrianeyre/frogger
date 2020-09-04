@@ -47,7 +47,7 @@
     "elliptic": "^6.5.3",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "serialize-javascript": "^4.0.0",
     "websocket-extensions": ">=0.1.4"
   }
