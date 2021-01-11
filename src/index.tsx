@@ -6,7 +6,13 @@ import 'react-app-polyfill/stable';
 import Frogger from './components/frogger/frogger';
 
 import './index.scss';
-import * as serviceWorker from './serviceWorker';
+import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(<Frogger />, document.getElementById('root'));
-serviceWorker.unregister();
+ReactDOM.render(
+    <React.StrictMode>
+        <Frogger />
+    </React.StrictMode>,
+    document.getElementById('root')
+);
+
+reportWebVitals();

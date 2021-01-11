@@ -9,6 +9,7 @@ describe('Info Board', () => {
 		const defaultProps: IInfoBoardProps = {
 			gameOver: true,
 			score: 1000,
+			containerHeight: 1000,
 			startGame: jest.fn(),
 		};
 

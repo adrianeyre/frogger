@@ -1,23 +1,7 @@
 {
   "name": "frogger",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.4.0",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.23",
-    "@types/node": "^12.12.17",
-    "@types/react": "^16.9.16",
-    "@types/react-dom": "^16.9.4",
-    "acorn": "^7.1.1",
-    "lodash": "^4.17.19",
-    "minimist": "^1.2.5",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0",
-    "typescript": "^3.7.3"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -39,21 +23,40 @@
       "last 1 safari version"
     ]
   },
+  "dependencies": {
+    "acorn": "^7.4.1",
+    "lodash": "^4.17.20",
+    "minimist": "^1.2.5",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "4.0.1",
+    "typescript": "^3.9.7"
+  },
   "devDependencies": {
-    "@hapi/hoek": "^9.1.0",
-    "@types/enzyme": "^3.10.4",
-    "@types/enzyme-adapter-react-16": "^1.0.5",
-    "@types/lodash": "^4.14.149",
-    "dot-prop": "^5.2.0",
+    "@hapi/hoek": "^9.1.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "@types/enzyme": "^3.10.8",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/jest": "^24.9.1",
+    "@types/lodash": "^4.14.167",
+    "@types/node": "^12.19.12",
+    "@types/react": "^16.14.2",
+    "@types/react-dom": "^16.9.10",
+    "dot-prop": "^5.3.0",
     "elliptic": "^6.5.3",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-adapter-react-16": "^1.15.5",
     "http-proxy": "^1.18.1",
+    "ini": "^2.0.0",
     "node-forge": "^0.10.0",
+    "node-notifier": "^9.0.0",
     "node-sass": "^4.14.1",
     "object-path": "^0.11.5",
     "serialize-javascript": "^4.0.0",
+    "web-vitals": "^1.0.1",
     "websocket-extensions": ">=0.1.4",
-    "yargs-parser": "^20.1.0"
+    "yargs-parser": "^20.2.4"
   }
 }

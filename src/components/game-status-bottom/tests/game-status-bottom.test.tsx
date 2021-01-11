@@ -8,7 +8,8 @@ describe('Game Status Bottom', () => {
 	it('Should render correctly', () => {
 		const defaultProps: IGameStatusBottomProps = {
 			lives: 1000,
-			time: 9999,
+			level: 1,
+			timer: 1,
 		};
 
 		const gameStatus = shallow(<GameStatusBottom {...defaultProps} />);

@@ -1,44 +1,45 @@
 {
-	"compilerOptions": {
-		"baseUrl": "src",
-		"outDir": "build/dist",
-		"module": "esnext",
-		"target": "es5",
-		"lib": [
-			"es6",
-			"esnext.asynciterable",
-			"dom"
-		],
-		"sourceMap": true,
-		"allowJs": true,
-		"jsx": "react",
-		"moduleResolution": "node",
-		"rootDir": "src",
-		"forceConsistentCasingInFileNames": true,
-		"noImplicitReturns": true,
-		"noImplicitThis": true,
-		"noImplicitAny": true,
-		"strictNullChecks": true,
-		"suppressImplicitAnyIndexErrors": true,
-		"noUnusedLocals": true,
-		"allowSyntheticDefaultImports": true,
-		"skipLibCheck": true,
-		"esModuleInterop": true,
-		"strict": true,
-		"resolveJsonModule": true,
-		"noEmit": true,
-		"isolatedModules": true
-	},
-	"exclude": [
-		"node_modules",
-		"build",
-		"scripts",
-		"acceptance-tests",
-		"webpack",
-		"jest",
-		"src/enzyme/setup.ts"
-	],
-	"include": [
-		"src/**/*"
-	]
+  "compilerOptions": {
+    "baseUrl": "src",
+    "outDir": "build/dist",
+    "module": "esnext",
+    "target": "es5",
+    "lib": [
+      "es6",
+      "esnext.asynciterable",
+      "dom"
+    ],
+    "sourceMap": true,
+    "allowJs": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "rootDir": "src",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "exclude": [
+    "node_modules",
+    "build",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "src/enzyme/setup.ts"
+  ],
+  "include": [
+    "src/**/*"
+  ]
 }

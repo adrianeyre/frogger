@@ -9,7 +9,9 @@ describe('Draw Sprite', () => {
 	it('Should render correctly', () => {
 		const defaultProps: IDrawSpriteProps = {
 			sprite: new Player({}),
-			image: 'image',
+			height: 10,
+			width: 10,
+			containerWidth: 100,
 		};
 
 		const drawFish = shallow(<DrawSprite {...defaultProps} />);

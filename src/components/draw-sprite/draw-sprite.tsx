@@ -39,7 +39,7 @@ export default class DrawSprite extends React.Component<IDrawSpriteProps, {}> {
 	})
 
 	private updateOffSets = () => {
-		this.offsetHeight = ((this.props.containerWidth / 100) * 9);
+		this.offsetHeight = (this.props.containerWidth / 100) * 9;
 		this.offsetWidth = this.props.sprite.xOffset ? -this.props.width / 2 : 0;
 	}
 }
