@@ -49,6 +49,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
     "http-proxy": "^1.18.1",
+    "immer": "^8.0.1",
     "ini": "^2.0.0",
     "node-forge": "^0.10.0",
     "node-notifier": "^9.0.0",
