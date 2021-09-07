@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { range } from 'lodash';
 
 import IGameStatusBottomProps from './interfaces/game-status-bottom-props';

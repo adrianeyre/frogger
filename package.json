@@ -1,12 +1,43 @@
 {
   "name": "frogger",
-  "version": "0.1.1",
+  "description": "A remake of the classic game Frogger",
+  "version": "0.2.0",
   "private": true,
+  "author": "Adrian Eyre",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adrianeyre/frogger.git"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "typescript": "^4.1.2",
+    "web-vitals": "^1.0.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/axios": "^0.14.0",
+    "@types/enzyme": "^3.10.9",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/jest": "^26.0.24",
+    "@types/lodash": "^4.14.172",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "immer": "^9.0.6",
+    "node-sass": "^6.0.1"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -22,55 +53,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "dependencies": {
-    "acorn": "^7.4.1",
-    "lodash": "^4.17.21",
-    "minimist": "^1.2.5",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.1",
-    "typescript": "^3.9.7"
-  },
-  "devDependencies": {
-    "@hapi/hoek": "^9.1.1",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "@types/enzyme": "^3.10.8",
-    "@types/enzyme-adapter-react-16": "^1.0.6",
-    "@types/jest": "^24.9.1",
-    "@types/lodash": "^4.14.167",
-    "@types/node": "^12.19.12",
-    "@types/react": "^16.14.2",
-    "@types/react-dom": "^16.9.10",
-    "browserlist": "^1.0.1",
-    "color-string": "^1.5.5",
-    "dns-packet": "^5.2.4",
-    "dot-prop": "^5.3.0",
-    "elliptic": "^6.5.4",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.5",
-    "glob-parent": "^6.0.0",
-    "hosted-git-info": "^4.0.2",
-    "http-proxy": "^1.18.1",
-    "immer": "^8.0.1",
-    "ini": "^2.0.0",
-    "is-svg": "^4.3.1",
-    "node-forge": "^0.10.0",
-    "node-notifier": "^9.0.0",
-    "node-sass": "^4.14.1",
-    "object-path": "^0.11.5",
-    "postcss": "^8.2.15",
-    "react-dev-utils": "^11.0.4",
-    "serialize-javascript": "^4.0.0",
-    "ssri": "^8.0.1",
-    "trim-newlines": "^4.0.2",
-    "url-parse": "^1.5.1",
-    "web-vitals": "^1.0.1",
-    "websocket-extensions": ">=0.1.4",
-    "ws": "^7.5.1",
-    "y18n": "^5.0.8",
-    "yargs-parser": "^20.2.4"
   }
 }

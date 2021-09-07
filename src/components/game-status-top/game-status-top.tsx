@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import IGameStatusTopProps from './interfaces/game-status-top-props';
 
 import './styles/game-status-top.scss';

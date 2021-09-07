@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 import IMobileButtonsProps from './interfaces/mobile-buttons-props'
 import PlayerResultEnum from '../../classes/enums/player-result-enum';
