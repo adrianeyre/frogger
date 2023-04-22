@@ -21,7 +21,7 @@ const InfoBoard: FC<IInfoBoardProps> = (props: IInfoBoardProps) => {
 		</div>
 
 		{ props.gameOver && <div className="game-over-area">
-			<div className="game-over-title">Game Over</div>
+			<div className="game-over-title">You Failed</div>
 			<div className="game-over-text">You scored { props.score }, better luck next time!</div>
 		</div> }
 
