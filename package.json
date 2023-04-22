@@ -1,6 +1,7 @@
 {
   "name": "frogger",
   "description": "A remake of the classic game Frogger",
+  "homepage":".",
   "version": "0.2.0",
   "private": true,
   "author": "Adrian Eyre",
