@@ -34,13 +34,12 @@ const InfoBoard: FC<IInfoBoardProps> = (props: IInfoBoardProps) => {
 				<li>You must reach the sidewalk in the middle of the screen without getting hit.</li>
 				<li>Don't fall in the water along the way. Ride the turtles and logs to the top.</li>
 				<li>Beware of diving turtles. If your Smol Frogz NFT is on them when they dive, he loses a life.</li>
-				<li>Avoid Fud & catch rpepe tokens for bonus points, and bring a lady frogz home tp score additional bonus points.</li>
-				<li>Connect To Continue.</li>
+				<li>Avoid Fud & catch $rpepe tokens for bonus points, and bring a lady frogz home tp score additional bonus points.</li>
 			</ul>
 		</div>
 
 		<div className="button-area">
-			<button type="button" onClick={ props.startGame }>Play Game</button>
+			<button type="button" onClick={ props.startGame }>CONNECT</button>
 		</div>
 	</div>
 }
