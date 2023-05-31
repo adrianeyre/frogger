@@ -9,10 +9,12 @@ import './index.scss';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-    <React.StrictMode>
-        <Frogger />
-    </React.StrictMode>,
-    document.getElementById('root')
+  <React.StrictMode>
+    <div className="container">
+      <Frogger />
+    </div>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
 
 reportWebVitals();
