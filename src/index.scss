@@ -1,14 +1,14 @@
 html {
 	height: 100%;
-}
-
-body {
+  }
+  
+  body {
 	min-height: 100%;
 	margin: 0;
 	padding: 0;
-}
-
-button {
+  }
+  
+  button {
 	font-family: 'Press Start 2P', cursive;
 	-webkit-transition-duration: 0.4s;
 	transition-duration: 0.4s;
@@ -20,11 +20,19 @@ button {
 	text-decoration: none;
 	display: inline-block;
 	font-size: 1.5em;
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
-
-button:hover {
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  button:hover {
 	background-color: white;
 	color: #008CBA;
-	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-}
+	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  .container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+  }
+  
