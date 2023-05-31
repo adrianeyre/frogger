@@ -24,16 +24,17 @@ $info-board-background: white;
 		text-align: center;
 		font-size: 1.8em;
 		margin-top: 1em;
-
+	  
 		.header-text {
-			margin: 0 1em;
+		  margin: 0 1em;
 		}
-
+	  
 		img {
-			height: 1em;
-			width: 1.5em;
+		  height: 30px; // Adjust the height to maintain aspect ratio
+		  width: 30px; // Set a fixed width value
 		}
-	}
+	  }
+	  
 
 	.info-board-instructions {
 		margin: 0.5em;

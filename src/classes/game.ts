@@ -7,7 +7,7 @@ import DirectionEnum from './enums/direction-enum';
 import PlayerResultEnum from './enums/player-result-enum';
 import IFroggerProps from '../components/frogger/interfaces/frogger-props';
 
-import * as spritesData from './data/sprites'
+import * as spritesData from './data/sprites';
 import Sprite from './sprite';
 
 export default class Game implements IGame {
@@ -28,7 +28,7 @@ export default class Game implements IGame {
 		this.level = 1;
 		this.isGameInPlay = false;
 		this.defaultTime = config.initialTime || 60;
-		this.time = this.defaultTime
+		this.time = this.defaultTime;
 		this.iteration = 1;
 	}
 
@@ -58,26 +58,27 @@ export default class Game implements IGame {
 			case PlayerResultEnum.LEVEL_COMPLETE:
 				this.handleLevelComplete(); break;
 		}
-	}
+	};
 
 	public handleTimer = (): void => {
-		const player = {...this.player};
-		this.iteration ++;
-
-		if (this.iteration === 100) this.time --;
-
+		const player = { ...this.player };
+		this.iteration++;
+	  
+		if (this.iteration === 200) this.time--;
+	  
 		if (this.time < 1) return this.handleLooseLife();
-
-		if (this.iteration > 100) this.iteration = 1;
-
+	  
+		if (this.iteration > 200) this.iteration = 1;
+	  
 		this.sprites
-			?.filter((sprite: ISprite) => sprite.speed && this.iteration % sprite.speed === 0)
-			.map((sprite: ISprite) => this.handleInput(sprite.move(player.x, player.y)));
-
+		  ?.filter((sprite: ISprite) => sprite.speed && this.iteration % sprite.speed === 0)
+		  .map((sprite: ISprite) => this.handleInput(sprite.move(player.x, player.y)));
+	  
 		if (this.player.y < 7) {
-			this.handleOverWater();
+		  this.handleOverWater();
 		}
-	}
+	  };
+	  
 
 	private move = (direction: DirectionEnum): void => {
 		const result = this.player.move(direction);
@@ -87,43 +88,45 @@ export default class Game implements IGame {
 		}
 
 		this.handleInput(result);
-	}
+	};
 
 	private handleOverWater = (): void => {
 		if (this.sprites.filter((sprite: ISprite) => sprite.x === this.player.x && sprite.y === this.player.y).length === 0) {
 			this.handleInput(PlayerResultEnum.DEAD);
 		}
-	}
+	};
 
 	private handleMoveClash = (clashResult: PlayerResultEnum): void => {
 		if (clashResult > 10) return;
 
 		this.handleInput(clashResult);
-	}
+	};
 
 	private handlePlayerHome = (homePosition: number): void => {
-		const homeSprite = this.sprites?.find((sprite: ISprite) => sprite.key === `player-home-${ homePosition }`);
+		const homeSprite = this.sprites?.find((sprite: ISprite) => sprite.key === `player-home-${homePosition}`);
 
 		if (!homeSprite || (homeSprite && homeSprite.visable)) return this.handleInput(PlayerResultEnum.DEAD);
 
 		homeSprite.visable = true;
 		return this.player.resetPlayerToStart();
-	}
+	};
 
 	private handleLevelComplete = (): void => {
-		this.level ++;
+		this.level++;
 		this.defaultTime -= 5;
 		if (this.defaultTime < this.LOWEST_TIME) this.defaultTime = this.LOWEST_TIME;
 		this.handleResetTimer();
 		this.player.resetPlayerToStart();
-	}
+	};
 
 	private handleLooseLife = (): void => {
 		this.handleResetTimer();
 		this.player.isAlive = this.player.looseLife();
 		this.player.resetPlayerToStart();
 		this.isGameInPlay = this.player.isAlive;
-	}
+	};
 
-	private handleResetTimer = (): number => this.time = this.defaultTime;
+	private handleResetTimer = (): void => {
+		this.time = this.defaultTime;
+	}
 }
