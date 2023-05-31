@@ -27,7 +27,7 @@ const InfoBoard: FC<IInfoBoardProps> = (props: IInfoBoardProps) => {
         </div>
       )}
 
-      <div className="info-board-instructions">
+      <div className="info-board-instructions text-center">
         <p>
           Users must own a Smol Frogz NFT to play.
         </p>
