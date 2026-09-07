@@ -1,4 +1,4 @@
-@import '../../default-styles/colours.scss';
+@use '../../default-styles/colours' as *;
 
 .mobile-buttons {
 	width: 100%;
@@ -12,7 +12,7 @@
 	}
 
 	button:hover {
-		background-color: #008CBA;
+		background-color: #008cba;
 		color: white;
 	}
 

@@ -1,0 +1,130 @@
+name: Release
+
+# Runs on every push to master, which includes the commit created when a pull
+# request is merged. semantic-release reads the conventional-commit messages
+# since the last tag, decides the next version, bumps package.json, writes the
+# changelog, creates the git tag and publishes the GitHub release. The site is
+# then built from the bumped tree and deployed to GitHub Pages.
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+# Never cancel a release in flight, and never run two at once: the second half
+# of this workflow publishes the site, and a cancelled deploy would leave it
+# serving a mix of two builds.
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 26
+          cache: npm
+
+      - run: npm ci
+      - run: npm run format:check
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run test
+      - run: npm run build
+
+  release:
+    name: Semantic release
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # create tags, commits and releases
+      issues: write # comment on released issues
+      pull-requests: write # comment on released PRs
+      id-token: write # provenance, if npm publishing is ever enabled
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          # semantic-release needs the full history and tags to work out the
+          # last release and the commits since.
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 26
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+        run: npx semantic-release
+
+  # The site is built and published here, at the end of the release, rather
+  # than from a workflow of its own, so that what gets deployed is the tree
+  # semantic-release just bumped rather than the commit that triggered the run.
+  build-site:
+    name: Build the site
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the released commit
+        uses: actions/checkout@v7
+        with:
+          # `master`, not the commit that triggered the run: the version bump
+          # semantic-release just pushed is one commit further on, and that
+          # bump is the whole reason this job waits for the release.
+          ref: master
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 26
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Report the version being published
+        run: echo "Publishing version $(node -p "require('./package.json').version")"
+
+      - name: Build
+        run: npm run build
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v6
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist-web
+
+  deploy-site:
+    name: Deploy to GitHub Pages
+    needs: build-site
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write # publish the artifact
+      id-token: write # the deployment's provenance token
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v5

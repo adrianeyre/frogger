@@ -1,18 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import 'react-app-polyfill/ie11';
-import 'react-app-polyfill/stable';
+import { createRoot } from 'react-dom/client';
 
 import Frogger from './components/frogger/frogger';
-
-import './index.scss';
 import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-    <React.StrictMode>
-        <Frogger />
-    </React.StrictMode>,
-    document.getElementById('root')
+import './index.scss';
+
+// React 19 removed `ReactDOM.render`; a root is created once and rendered into.
+const container = document.getElementById('root');
+
+if (!container) throw new Error('No #root element to mount Frogger into.');
+
+createRoot(container).render(
+	<React.StrictMode>
+		<Frogger />
+	</React.StrictMode>,
 );
 
 reportWebVitals();

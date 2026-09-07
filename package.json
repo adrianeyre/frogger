@@ -1,57 +1,93 @@
 {
-  "name": "frogger",
-  "description": "A remake of the classic game Frogger",
-  "version": "0.2.0",
-  "private": true,
-  "author": "Adrian Eyre",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/adrianeyre/frogger.git"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "dependencies": {
-    "lodash": "^4.17.21",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1",
-    "typescript": "^4.9.4",
-    "web-vitals": "^3.1.0"
-  },
-  "devDependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^14.4.3",
-    "@types/enzyme": "^3.10.12",
-    "@types/enzyme-adapter-react-16": "^1.0.6",
-    "@types/jest": "^29.2.4",
-    "@types/lodash": "^4.14.191",
-    "@types/node": "^18.11.17",
-    "@types/react": "^18.0.26",
-    "@types/react-dom": "^18.0.9",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.7",
-    "jest": "^29.3.1",
-    "jest-watch-typeahead": "^2.2.1",
-    "node-sass": "^8.0.0"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+	"name": "frogger",
+	"version": "1.0.0",
+	"private": true,
+	"description": "A remake of the classic game Frogger",
+	"keywords": [
+		"frogger",
+		"game",
+		"react",
+		"typescript",
+		"scss"
+	],
+	"license": "MIT",
+	"author": "Adrian Eyre",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/adrianeyre/frogger.git"
+	},
+	"bugs": {
+		"url": "https://github.com/adrianeyre/frogger/issues"
+	},
+	"homepage": "https://adrianeyre.github.io/frogger/",
+	"type": "module",
+	"engines": {
+		"node": ">=26"
+	},
+	"scripts": {
+		"start": "vite",
+		"dev": "vite",
+		"build": "tsc --noEmit && vite build",
+		"preview": "vite preview",
+		"serve": "vite preview --host --port 4173",
+		"typecheck": "tsc --noEmit",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"format": "prettier --write \"src/**/*.{ts,tsx,scss}\" \"*.{ts,js,json,md}\"",
+		"format:check": "prettier --check \"src/**/*.{ts,tsx,scss}\" \"*.{ts,js,json,md}\"",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"test:coverage": "vitest run --coverage",
+		"semantic-release": "semantic-release"
+	},
+	"dependencies": {
+		"lodash": "^4.18.1",
+		"react": "^19.2.8",
+		"react-dom": "^19.2.8",
+		"web-vitals": "^6.2.1"
+	},
+	"devDependencies": {
+		"@eslint/js": "^10.0.1",
+		"@semantic-release/changelog": "^7.0.0",
+		"@semantic-release/commit-analyzer": "^13.0.1",
+		"@semantic-release/git": "^11.0.1",
+		"@semantic-release/github": "^12.0.9",
+		"@semantic-release/npm": "^13.1.5",
+		"@semantic-release/release-notes-generator": "^14.1.1",
+		"@testing-library/dom": "^10.4.1",
+		"@testing-library/jest-dom": "^7.0.1",
+		"@testing-library/react": "^16.3.3",
+		"@testing-library/user-event": "^14.6.7",
+		"@types/lodash": "^4.17.25",
+		"@types/node": "^26.4.1",
+		"@types/react": "^19.2.18",
+		"@types/react-dom": "^19.2.7",
+		"@vitejs/plugin-react": "^6.1.1",
+		"@vitest/coverage-v8": "^5.0.0",
+		"conventional-changelog-conventionalcommits": "^10.4.0",
+		"eslint": "^10.10.0",
+		"eslint-plugin-react-hooks": "^7.1.1",
+		"eslint-plugin-react-refresh": "^0.5.6",
+		"globals": "^17.12.0",
+		"jsdom": "^30.0.1",
+		"prettier": "^3.9.6",
+		"sass": "^1.104.0",
+		"semantic-release": "^25.0.9",
+		"typescript": "^6.0.3",
+		"typescript-eslint": "^8.69.0",
+		"vite": "^8.2.2",
+		"vitest": "^5.0.0"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
 }

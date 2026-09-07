@@ -9,7 +9,7 @@ export default interface IPlayer {
 	initialPlayerX: number;
 	initialPlayerY: number;
 	xOffset: boolean;
-	zIndex: number
+	zIndex: number;
 	direction: DirectionEnum;
 	score: number;
 	lives: number;

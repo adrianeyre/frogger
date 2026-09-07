@@ -1,3 +1,149 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Frogger Should render correctly 1`] = `ShallowWrapper {}`;
+exports[`Frogger > Should render correctly 1`] = `
+<div
+  class="frogger-play-container"
+  style="max-width: 0px;"
+>
+  <div
+    style="position: absolute; width: 100%; max-width: 0px;"
+  >
+    <div
+      class="game-status-top"
+    >
+      <div
+        class="game-status-left"
+      >
+        1-UP 
+        <span
+          class="variable-text"
+        >
+          0
+        </span>
+      </div>
+      <div
+        class="game-status-right"
+      >
+        HI-SCORE 
+        <span
+          class="variable-text"
+        >
+          10000
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    class="info-board"
+    style="width: 100%; max-width: 0px;"
+  >
+    <div
+      class="info-board-header"
+    >
+      <img
+        alt="player"
+        src="/src/images/player-right.png"
+      />
+      <span
+        class="header-text"
+      >
+        Frogger
+      </span>
+      <img
+        alt="player"
+        src="/src/images/player-left.png"
+      />
+    </div>
+    <div
+      class="info-board-instructions"
+    >
+      <ul>
+        <li>
+          You control Frogger, guiding him in four directions with the arrow keys.
+        </li>
+        <li>
+          You must guide Frogger to each of the five empty slots at the top of the screen in order to advance to the next stage.
+        </li>
+        <li>
+          You start at the bottom of the screen beneath five lanes of traffic.
+        </li>
+        <li>
+          You must reach the sidewalk in the middle of the screen without getting hit by any vehicles.
+        </li>
+        <li>
+          You must not fall in the water on the way to one of the slots at the top. Ride the turtles and logs to the top, but don't get pulled off the side of the screen.
+        </li>
+        <li>
+          Beware of diving turtles. If Frogger is on them when they dive, he loses a life.
+        </li>
+        <li>
+          Avoid crocodile mouths, catch flies in the slots for bonus points, and bring the lady frog to your home for more bonus points.
+        </li>
+      </ul>
+    </div>
+    <div
+      class="button-area"
+    >
+      <button
+        type="button"
+      >
+        Play Game
+      </button>
+    </div>
+  </div>
+  <div
+    style="position: absolute; width: 100%; max-width: 0px; top: 0px;"
+  >
+    <div
+      class="game-status-bottom"
+    >
+      <div
+        class="game-status-left"
+      >
+        LIVES
+         
+        <img
+          alt="lives"
+          class="player-lives"
+          src="/src/images/lives.png"
+        />
+        <img
+          alt="lives"
+          class="player-lives"
+          src="/src/images/lives.png"
+        />
+        <img
+          alt="lives"
+          class="player-lives"
+          src="/src/images/lives.png"
+        />
+        <img
+          alt="lives"
+          class="player-lives"
+          src="/src/images/lives.png"
+        />
+      </div>
+      <div
+        class="game-status-centre"
+      >
+        LEVEL 
+        <span
+          class="variable-text"
+        >
+          1
+        </span>
+      </div>
+      <div
+        class="game-status-right"
+      >
+        <span
+          class="variable-text"
+        >
+          60
+        </span>
+         TIMER
+      </div>
+    </div>
+  </div>
+</div>
+`;
