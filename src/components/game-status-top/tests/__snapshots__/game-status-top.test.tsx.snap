@@ -1,3 +1,28 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Game Status Top Should render correctly 1`] = `ShallowWrapper {}`;
+exports[`Game Status Top > Should render correctly 1`] = `
+<div
+  class="game-status-top"
+>
+  <div
+    class="game-status-left"
+  >
+    1-UP 
+    <span
+      class="variable-text"
+    >
+      1000
+    </span>
+  </div>
+  <div
+    class="game-status-right"
+  >
+    HI-SCORE 
+    <span
+      class="variable-text"
+    >
+      9999
+    </span>
+  </div>
+</div>
+`;

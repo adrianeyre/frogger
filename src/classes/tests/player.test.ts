@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import DirectionEnum from '../enums/direction-enum';
 
 import Player from '../player';
@@ -18,7 +20,7 @@ describe('Player', () => {
 		expect(player.direction).toEqual(DirectionEnum.UP);
 		expect(player.score).toEqual(0);
 		expect(player.lives).toEqual(5);
-		expect(player.image).toEqual('player-up.png');
+		expect(player.image).toContain('player-up');
 		expect(player.isAlive).toEqual(true);
 		expect(player.frogsHomeCount).toEqual(0);
 	});
@@ -32,7 +34,7 @@ describe('Player', () => {
 
 	it('Should move player down one space', () => {
 		const player = new Player({});
-		player.y = 10
+		player.y = 10;
 		player.move(DirectionEnum.DOWN);
 
 		expect(player.y).toEqual(11);

@@ -7,7 +7,6 @@ export default interface IGame {
 	sprites?: ISprite[];
 	level: number;
 	time: number;
-	timer: any;
 	iteration: number;
 	isGameInPlay: boolean;
 	handleInput(playerResult: PlayerResultEnum): void;

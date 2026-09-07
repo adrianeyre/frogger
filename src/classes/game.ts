@@ -7,7 +7,7 @@ import DirectionEnum from './enums/direction-enum';
 import PlayerResultEnum from './enums/player-result-enum';
 import IFroggerProps from '../components/frogger/interfaces/frogger-props';
 
-import * as spritesData from './data/sprites'
+import * as spritesData from './data/sprites';
 import Sprite from './sprite';
 
 export default class Game implements IGame {
@@ -15,7 +15,6 @@ export default class Game implements IGame {
 	public sprites: ISprite[];
 	public level: number;
 	public time: number;
-	public timer: any;
 	public iteration: number;
 	public isGameInPlay: boolean;
 	public defaultTime: number;
@@ -28,7 +27,7 @@ export default class Game implements IGame {
 		this.level = 1;
 		this.isGameInPlay = false;
 		this.defaultTime = config.initialTime || 60;
-		this.time = this.defaultTime
+		this.time = this.defaultTime;
 		this.iteration = 1;
 	}
 
@@ -38,33 +37,41 @@ export default class Game implements IGame {
 			case PlayerResultEnum.SAFE:
 				return;
 			case PlayerResultEnum.ARROW_UP:
-				this.move(DirectionEnum.UP); break;
+				this.move(DirectionEnum.UP);
+				break;
 			case PlayerResultEnum.ARROW_DOWN:
-				this.move(DirectionEnum.DOWN); break;
+				this.move(DirectionEnum.DOWN);
+				break;
 			case PlayerResultEnum.ARROW_RIGHT:
-				this.move(DirectionEnum.RIGHT); break;
+				this.move(DirectionEnum.RIGHT);
+				break;
 			case PlayerResultEnum.ARROW_LEFT:
-				this.move(DirectionEnum.LEFT); break;
+				this.move(DirectionEnum.LEFT);
+				break;
 			case PlayerResultEnum.DEAD:
-				this.handleLooseLife(); break;
+				this.handleLooseLife();
+				break;
 			case PlayerResultEnum.HOME1:
 			case PlayerResultEnum.HOME2:
 			case PlayerResultEnum.HOME3:
 			case PlayerResultEnum.HOME4:
 			case PlayerResultEnum.HOME5:
-				this.handlePlayerHome(playerResult); break;
+				this.handlePlayerHome(playerResult);
+				break;
 			case PlayerResultEnum.OVER_WATER:
-				this.handleOverWater(); break;
+				this.handleOverWater();
+				break;
 			case PlayerResultEnum.LEVEL_COMPLETE:
-				this.handleLevelComplete(); break;
+				this.handleLevelComplete();
+				break;
 		}
-	}
+	};
 
 	public handleTimer = (): void => {
-		const player = {...this.player};
-		this.iteration ++;
+		const player = { ...this.player };
+		this.iteration++;
 
-		if (this.iteration === 100) this.time --;
+		if (this.iteration === 100) this.time--;
 
 		if (this.time < 1) return this.handleLooseLife();
 
@@ -77,53 +84,57 @@ export default class Game implements IGame {
 		if (this.player.y < 7) {
 			this.handleOverWater();
 		}
-	}
+	};
 
 	private move = (direction: DirectionEnum): void => {
 		const result = this.player.move(direction);
 
 		if (result === PlayerResultEnum.SAFE) {
-			this.sprites?.filter((sprite: ISprite) => sprite.y === this.player.y).map((sprite: ISprite) => this.handleMoveClash(sprite.checkClash(this.player.x, this.player.y)));
+			this.sprites
+				?.filter((sprite: ISprite) => sprite.y === this.player.y)
+				.map((sprite: ISprite) => this.handleMoveClash(sprite.checkClash(this.player.x, this.player.y)));
 		}
 
 		this.handleInput(result);
-	}
+	};
 
 	private handleOverWater = (): void => {
-		if (this.sprites.filter((sprite: ISprite) => sprite.x === this.player.x && sprite.y === this.player.y).length === 0) {
+		if (
+			this.sprites.filter((sprite: ISprite) => sprite.x === this.player.x && sprite.y === this.player.y).length === 0
+		) {
 			this.handleInput(PlayerResultEnum.DEAD);
 		}
-	}
+	};
 
 	private handleMoveClash = (clashResult: PlayerResultEnum): void => {
 		if (clashResult > 10) return;
 
 		this.handleInput(clashResult);
-	}
+	};
 
 	private handlePlayerHome = (homePosition: number): void => {
-		const homeSprite = this.sprites?.find((sprite: ISprite) => sprite.key === `player-home-${ homePosition }`);
+		const homeSprite = this.sprites?.find((sprite: ISprite) => sprite.key === `player-home-${homePosition}`);
 
 		if (!homeSprite || (homeSprite && homeSprite.visable)) return this.handleInput(PlayerResultEnum.DEAD);
 
 		homeSprite.visable = true;
 		return this.player.resetPlayerToStart();
-	}
+	};
 
 	private handleLevelComplete = (): void => {
-		this.level ++;
+		this.level++;
 		this.defaultTime -= 5;
 		if (this.defaultTime < this.LOWEST_TIME) this.defaultTime = this.LOWEST_TIME;
 		this.handleResetTimer();
 		this.player.resetPlayerToStart();
-	}
+	};
 
 	private handleLooseLife = (): void => {
 		this.handleResetTimer();
 		this.player.isAlive = this.player.looseLife();
 		this.player.resetPlayerToStart();
 		this.isGameInPlay = this.player.isAlive;
-	}
+	};
 
-	private handleResetTimer = (): number => this.time = this.defaultTime;
+	private handleResetTimer = (): number => (this.time = this.defaultTime);
 }

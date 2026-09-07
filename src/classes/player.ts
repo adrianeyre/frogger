@@ -17,7 +17,7 @@ export default class Player implements IPlayer {
 	public initialPlayerX: number;
 	public initialPlayerY: number;
 	public xOffset: boolean;
-	public zIndex: number
+	public zIndex: number;
 	public direction: DirectionEnum;
 	public score: number;
 	public lives: number;
@@ -34,12 +34,7 @@ export default class Player implements IPlayer {
 	readonly SCORE_MOVING_UP: number = 10;
 	readonly SCORE_GETTING_HOME: number = 50;
 	readonly SCORE_LEVEL_COMPLETE: number = 1000;
-	readonly playerImages: string[] = [
-		playerUp,
-		playerDown,
-		playerLeft,
-		playerRight,
-	]
+	readonly playerImages: string[] = [playerUp, playerDown, playerLeft, playerRight];
 
 	constructor(config: IFroggerProps) {
 		this.key = 'player';
@@ -61,17 +56,25 @@ export default class Player implements IPlayer {
 
 	public move = (direction: DirectionEnum): PlayerResultEnum => {
 		let result = PlayerResultEnum.SAFE;
-		this.direction = direction
+		this.direction = direction;
 		this.setImage();
 
 		let x = this.x;
 		let y = this.y;
 
 		switch (direction) {
-			case DirectionEnum.UP: y--; break;
-			case DirectionEnum.DOWN: y++; break;
-			case DirectionEnum.LEFT: x--; break;
-			case DirectionEnum.RIGHT: x++; break;
+			case DirectionEnum.UP:
+				y--;
+				break;
+			case DirectionEnum.DOWN:
+				y++;
+				break;
+			case DirectionEnum.LEFT:
+				x--;
+				break;
+			case DirectionEnum.RIGHT:
+				x++;
+				break;
 		}
 
 		if (!this.isValidSpace(x, y)) return PlayerResultEnum.NO_MOVE;
@@ -79,12 +82,12 @@ export default class Player implements IPlayer {
 
 		if (isHome) {
 			this.score += this.SCORE_GETTING_HOME;
-			this.frogsHomeCount ++;
+			this.frogsHomeCount++;
 
 			if (this.frogsHomeCount < 5) return isHome;
 
 			this.score += this.SCORE_LEVEL_COMPLETE;
-			return PlayerResultEnum.LEVEL_COMPLETE
+			return PlayerResultEnum.LEVEL_COMPLETE;
 		}
 
 		if (this.isInWater(x, y)) result = PlayerResultEnum.OVER_WATER;
@@ -97,22 +100,22 @@ export default class Player implements IPlayer {
 			this.score += this.SCORE_MOVING_UP;
 		}
 
-		return result
-	}
+		return result;
+	};
 
 	public resetPlayerToStart = () => {
 		this.x = this.initialPlayerX;
 		this.y = this.initialPlayerY;
 		this.lowestPoint = 13;
-	}
+	};
 
 	public looseLife = (): boolean => {
-		this.lives --;
+		this.lives--;
 
 		return this.lives > 0;
-	}
+	};
 
-	private isInWater = (x: number, y: number): boolean => y > 1 && y < 7;
+	private isInWater = (_x: number, y: number): boolean => y > 1 && y < 7;
 
 	private isValidSpace = (x: number, y: number): boolean => x >= 1 && x <= 14 && y >= 1 && y <= 13;
 
@@ -124,7 +127,7 @@ export default class Player implements IPlayer {
 		if (x === 10 || x === 11) return 8;
 		if (x === 13 || x === 14) return 9;
 		return PlayerResultEnum.DEAD;
-	}
+	};
 
-	private setImage = (): string => this.image = this.playerImages[this.direction];
+	private setImage = (): string => (this.image = this.playerImages[this.direction]);
 }

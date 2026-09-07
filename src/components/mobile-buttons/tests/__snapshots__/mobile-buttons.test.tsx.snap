@@ -1,3 +1,41 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Info Board Should render correctly 1`] = `ShallowWrapper {}`;
+exports[`Mobile Buttons > Should render correctly 1`] = `
+<div
+  class="mobile-buttons"
+>
+  <div
+    class="button-row"
+  >
+    <button
+      type="button"
+    >
+      UP
+    </button>
+  </div>
+  <div
+    class="button-row"
+  >
+    <button
+      class="left-button"
+      type="button"
+    >
+      LEFT
+    </button>
+    <button
+      type="button"
+    >
+      RIGHT
+    </button>
+  </div>
+  <div
+    class="button-row"
+  >
+    <button
+      type="button"
+    >
+      DOWN
+    </button>
+  </div>
+</div>
+`;

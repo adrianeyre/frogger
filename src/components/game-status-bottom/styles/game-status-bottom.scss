@@ -1,10 +1,10 @@
-@import '../../default-styles/colours.scss';
+@use '../../default-styles/colours' as *;
 
 .game-status-bottom {
 	width: 100%;
 	position: absolute;
 	color: $info-bar-text-colour;
-	content: "";
+	content: '';
 	display: table;
 	clear: both;
 
@@ -27,7 +27,7 @@
 		float: left;
 		width: 25%;
 	}
-	
+
 	.game-status-right {
 		text-align: right;
 		float: right;
